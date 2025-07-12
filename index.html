@@ -1,323 +1,240 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MINIAPP TG — современное Telegram приложение</title>
-<style>
-  /* --- Reset и базовые стили --- */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #fafafa;
-    color: #222;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #0077ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINIAPP TG — Будущее в Telegram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f680.svg">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal"></script>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #121212;
+      --accent: #00aaff;
+      --text-light: #fff;
+      --text-dark: #222;
+      --code-bg: #1e1e1e;
+      --code-text: #d4d4d4;
+    }
 
-  /* --- Контейнер --- */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* --- Хедер и навигация --- */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    z-index: 1000;
-    box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
-  }
-  .nav-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #0077ff;
-    user-select: none;
-  }
-  nav {
-    display: flex;
-    gap: 20px;
-  }
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #333;
-    padding: 6px 10px;
-    border-radius: 5px;
-    transition: background 0.25s ease;
-  }
-  nav a:hover,
-  nav a.active {
-    background: #0077ff;
-    color: white;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      transition: background 0.5s, color 0.5s;
+    }
 
-  /* --- Мобильное меню (бургер) --- */
-  .burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    width: 25px;
-    height: 20px;
-    justify-content: space-between;
-  }
-  .burger div {
-    height: 3px;
-    background: #0077ff;
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-
-  /* Анимация бургера при открытии */
-  .burger.open div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .burger.open div:nth-child(2) {
-    opacity: 0;
-  }
-  .burger.open div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  /* Мобильное меню скрыто по умолчанию */
-  @media (max-width: 768px) {
-    nav {
+    header {
       position: fixed;
-      top: 60px;
-      right: 0;
-      background: white;
-      flex-direction: column;
-      width: 200px;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      border-left: 1px solid #ddd;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      height: calc(100vh - 60px);
-      padding-top: 20px;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
       z-index: 999;
     }
-    nav.open {
-      transform: translateX(0);
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--accent);
+      letter-spacing: 1px;
     }
+
     nav a {
-      padding: 15px 20px;
-      font-size: 1.1rem;
+      margin-left: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-dark);
+      position: relative;
     }
-    .burger {
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 120px 10% 80px;
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      line-height: 1.7;
+    }
+
+    .hero {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
     }
-  }
 
-  /* --- Секции --- */
-  section {
-    padding: 80px 0 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  h1, h2 {
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #111;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #444;
-    max-width: 700px;
-  }
-  ul {
-    list-style: none;
-    margin-top: 15px;
-  }
-  ul li {
-    font-size: 1.1rem;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    color: #555;
-  }
+    .btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
 
-  /* --- Кнопка CTA --- */
-  .btn-primary {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 28px;
-    background: #0077ff;
-    color: white;
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgb(0 119 255 / 0.4);
-    transition: background 0.3s ease;
-    user-select: none;
-    text-decoration: none;
-  }
-  .btn-primary:hover {
-    background: #005fcc;
-  }
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
-  /* --- Блок с кодом --- */
-  pre {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Source Code Pro', monospace, monospace;
-    font-size: 14px;
-    max-width: 700px;
-    margin-top: 25px;
-  }
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
 
-  /* --- Футер --- */
-  footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #888;
-    font-size: 0.9rem;
-    border-top: 1px solid #ddd;
-    user-select: none;
-  }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter&family=Source+Code+Pro&display=swap" rel="stylesheet" />
+    .dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .dark-mode nav a,
+    .dark-mode .logo {
+      color: var(--text-light);
+    }
+
+    .dark-mode pre {
+      background: #000000;
+    }
+
+    .toggle-theme {
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="nav-container">
+  <header>
     <div class="logo">MINIAPP TG</div>
-    <nav id="nav-menu">
-      <a href="#home" class="active">Главная</a>
-      <a href="#about">О приложении</a>
+    <nav>
+      <a href="#home">Главная</a>
       <a href="#features">Функции</a>
+      <a href="#code">Код</a>
       <a href="#contact">Контакты</a>
+      <button class="toggle-theme" onclick="toggleTheme()">🌜/🌞</button>
     </nav>
-    <div class="burger" id="burger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-</header>
+  </header>
 
-<main class="container">
-
-  <section id="home" class="visible">
-    <h1>Добро пожаловать в MINIAPP TG</h1>
-    <p>Минималистичное и удобное Telegram-приложение, созданное для эффективного общения и управления вашими задачами.</p>
-    <a href="#contact" class="btn-primary">Связаться с нами</a>
-  </section>
-
-  <section id="about">
-    <h2>О приложении</h2>
-    <p>MINIAPP TG — это легкое и быстрое приложение для Telegram, которое помогает оптимизировать ваше время и повысить продуктивность. Простой интерфейс и мощный функционал — всё, что нужно для комфортного общения.</p>
+  <section class="hero" id="home">
+    <h1><span id="typed"></span></h1>
+    <p>Ультра-минималистичное Telegram-приложение нового поколения с фокусом на скорость, продуктивность и стиль.</p>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Связаться с нами</button>
   </section>
 
   <section id="features">
-    <h2>Ключевые функции</h2>
-    <ul>
-      <li>Удобный чат с возможностью закрепления важных сообщений.</li>
-      <li>Интеграция с популярными ботами и сервисами.</li>
-      <li>Групповые уведомления и напоминания.</li>
-      <li>Темная и светлая тема с автоматическим переключением.</li>
-      <li>Высокая безопасность и шифрование переписок.</li>
-    </ul>
+    <h2>Почему MINIAPP TG?</h2>
+    <p>
+      — Мгновенное переключение тем <br />
+      — Поддержка Telegram API и кастомных ботов <br />
+      — Режим концентрации и интеграция с задачами <br />
+      — Уведомления нового поколения <br />
+      — Приватность, без компромиссов
+    </p>
+  </section>
 
-    <pre><code>
-// Пример кода инициализации приложения MINIAPP TG
-const miniApp = new MiniAppTG({
+  <section id="code">
+    <h2>Пример инициализации:</h2>
+    <pre><code>// Импорт MINIAPP
+import { MiniApp } from 'miniapp-tg';
+
+const app = new MiniApp({
   theme: 'auto',
   notifications: true,
-  encryption: true,
-  botsIntegration: ['bot1', 'bot2']
+  apiKey: 'YOUR_SECRET_TOKEN',
+  onReady: () => console.log('MINIAPP запущен!')
 });
 
-miniApp.launch();
-    </code></pre>
+app.init();</code></pre>
   </section>
 
   <section id="contact">
     <h2>Контакты</h2>
-    <p>Если у вас есть вопросы или предложения — мы всегда на связи!</p>
-    <ul>
-      <li>Email: miniapptg@example.com</li>
-      <li>Telegram: <a href="https://t.me/miniapptg" target="_blank">@miniapptg</a></li>
-      <li>Телефон: +7 (999) 123-45-67</li>
-    </ul>
-    <a href="mailto:miniapptg@example.com" class="btn-primary">Написать нам</a>
+    <p>Telegram: <a href="https://t.me/miniapptg" target="_blank">@miniapptg</a> <br/>
+       Email: <a href="mailto:hi@miniapp.tg">hi@miniapp.tg</a></p>
   </section>
 
-</main>
+  <footer>
+    &copy; 2025 MINIAPP TG — Сделано с ❤️ и JS.
+  </footer>
 
-<footer>
-  &copy; 2025 MINIAPP TG. Все права защищены.
-</footer>
-
-<script>
-  // Анимация появления секций при скролле
-  function showSections() {
-    const sections = document.querySelectorAll('main section');
-    const triggerBottom = window.innerHeight * 0.85;
-
-    sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
-      if(top < triggerBottom) {
-        section.classList.add('visible');
-      }
+  <script>
+    // Typed.js для динамичного заголовка
+    new Typed('#typed', {
+      strings: ['MINIAPP TG', 'Будущее в Telegram', 'Просто. Быстро. Стилизованно.'],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
     });
-  }
 
-  window.addEventListener('scroll', showSections);
-  window.addEventListener('load', showSections);
-
-  // Работа мобильного меню бургер
-  const burger = document.getElementById('burger');
-  const navMenu = document.getElementById('nav-menu');
-
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    navMenu.classList.toggle('open');
-  });
-
-  // Подсветка активного пункта меню при клике
-  const navLinks = navMenu.querySelectorAll('a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      // Закрыть меню на мобиле после выбора
-      if(window.innerWidth <= 768) {
-        burger.classList.remove('open');
-        navMenu.classList.remove('open');
-      }
+    // ScrollReveal
+    ScrollReveal().reveal('section', {
+      distance: '50px',
+      duration: 900,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false,
+      interval: 100
     });
-  });
-</script>
 
+    // Тема: светлая / тёмная
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
