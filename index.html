@@ -1,86 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Создание Приложения</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Сайт-визитка</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+  }
+  nav {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  nav a:hover {
+    background: #ddd;
+  }
+  main {
+    max-width: 900px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+  }
+  section {
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  h1, h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>
 </head>
 <body>
-  <!-- Кнопка переключения темы с иконками -->
-  <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
-    <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24" style="display: none;">
-      <circle cx="12" cy="12" r="5" stroke-width="2"/>
-      <line x1="12" y1="1" x2="12" y2="3" stroke-width="2"/>
-      <line x1="12" y1="21" x2="12" y2="23" stroke-width="2"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2"/>
-      <line x1="1" y1="12" x2="3" y2="12" stroke-width="2"/>
-      <line x1="21" y1="12" x2="23" y2="12" stroke-width="2"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2"/>
-    </svg>
-    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-      <path stroke-width="2" d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z" />
-    </svg>
-  </button>
 
-  <!-- Навигация -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <button class="hamburger" id="hamburger" aria-label="Открыть меню">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#welcome" class="nav-link">Приветственная</a></li>
-        <li><a href="#about" class="nav-link">Обо мне</a></li>
-        <li><a href="#examples" class="nav-link">Примеры работ</a></li>
-        <li><a href="https://t.me/Chicha207" target="_blank" rel="noopener" class="nav-link">Связь (Telegram)</a></li>
-      </ul>
-    </div>
+<header>
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#contacts">Контакты</a>
   </nav>
+</header>
 
-  <div class="container">
-    <main>
-      <section id="welcome" class="welcome-section">
-        <div class="centered-text">
-          <h1 id="typewriter"></h1>
-        </div>
-      </section>
+<main>
+  <section id="about">
+    <h1>Привет! Я Кирилл Любовский</h1>
+    <p>Я веб-разработчик, создаю современные, удобные и красивые сайты и приложения.</p>
+  </section>
 
-      <section id="about" class="fade-in">
-        <p>Этот проект посвящён разработке удобных и интуитивных приложений для разных платформ.</p>
-      </section>
+  <section id="skills">
+    <h2>Навыки</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Vue</li>
+      <li>Node.js, Express</li>
+      <li>Работа с API и базами данных</li>
+    </ul>
+  </section>
 
-      <section class="code-block fade-in">
-        <div class="code-header">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <span class="filename">app.js</span>
-        </div>
-        <pre><code id="code-content">
-// Здесь будет отображаться пример кода, изменяемый только через исходный код сайта
-        </code></pre>
-      </section>
+  <section id="portfolio">
+    <h2>Портфолио</h2>
+    <p>Здесь будут мои лучшие проекты:</p>
+    <ul>
+      <li><a href="#">Проект 1</a></li>
+      <li><a href="#">Проект 2</a></li>
+      <li><a href="#">Проект 3</a></li>
+    </ul>
+  </section>
 
-      <section id="examples" class="examples fade-in">
-        <div class="example">Пример 1</div>
-        <div class="example">Пример 2</div>
-        <div class="example">Пример 3</div>
-        <div class="example">Пример 4</div>
-      </section>
-    </main>
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p>Email: example@mail.com</p>
+    <p>Телефон: +7 (999) 123-45-67</p>
+    <p>Telegram: @kirill</p>
+  </section>
+</main>
 
-    <footer class="fade-in">
-      <a href="https://t.me/Chicha207" target="_blank" rel="noopener" class="contact-button">Мои контакты (Telegram)</a>
-      <a href="https://t.me/+jmDTG2qgejM3MDli" target="_blank" rel="noopener" class="contact-button">Мой канал (Telegram)</a>
-    </footer>
-  </div>
+<footer>
+  &copy; 2025 Кирилл Любовский. Все права защищены.
+</footer>
 
-  <script src="script.js"></script>
+<script>
+  // Плавное появление секций при скролле
+  function showSections() {
+    const sections = document.querySelectorAll('section');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', showSections);
+  window.addEventListener('load', showSections);
+</script>
+
 </body>
 </html>
