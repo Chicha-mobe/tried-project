@@ -7,14 +7,26 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="logo.png" alt="Логотип" class="logo" />
-      <h1 class="project-name">Проект: Создание Приложения</h1>
-    </header>
+  <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
 
+  <nav class="navbar">
+    <ul>
+      <li><a href="#welcome">Приветственная</a></li>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#examples">Примеры работ</a></li>
+      <li><a href="https://t.me/Chicha207" target="_blank">Связь (Telegram)</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
     <main>
-      <section class="fade-in">
+      <section id="welcome" class="welcome-section">
+        <div class="centered-text">
+          <h1 id="typewriter"></h1>
+        </div>
+      </section>
+
+      <section id="about" class="fade-in">
         <p>Этот проект посвящён разработке удобных и интуитивных приложений для разных платформ.</p>
       </section>
 
@@ -30,7 +42,7 @@
         </code></pre>
       </section>
 
-      <section class="examples fade-in">
+      <section id="examples" class="examples fade-in">
         <div class="example">Пример 1</div>
         <div class="example">Пример 2</div>
         <div class="example">Пример 3</div>
