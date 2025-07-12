@@ -4,6 +4,7 @@
   --code-bg: #1e1e1e;
   --example-bg: #fff;
   --nav-bg: transparent;
+  --nav-text: var(--text);
 }
 
 body.dark {
@@ -12,6 +13,7 @@ body.dark {
   --code-bg: #2d2d2d;
   --example-bg: #333;
   --nav-bg: #111;
+  --nav-text: #f0f0f0;
 }
 
 body {
@@ -20,15 +22,24 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background 0.4s, color 0.4s;
+  scroll-behavior: smooth;
 }
 
 .theme-toggle {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
   cursor: pointer;
-  z-index: 1000;
+  color: var(--text);
+  z-index: 1001;
+  padding: 4px;
+}
+
+.theme-toggle svg {
+  display: block;
+  stroke: var(--text);
 }
 
 .navbar {
@@ -37,28 +48,94 @@ body {
   top: 0;
   z-index: 999;
   padding: 15px 20px;
-  display: flex;
-  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.navbar ul {
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar a {
-  color: var(--text);
+.nav-menu li {
+  position: relative;
+}
+
+.nav-link {
+  color: var(--nav-text);
   text-decoration: none;
-  font-weight: bold;
-  padding: 5px;
-  transition: all 0.3s;
+  font-weight: 600;
+  padding: 5px 0;
+  transition: border-bottom 0.3s ease;
 }
 
-.navbar a:hover {
-  border-bottom: 2px solid var(--text);
+.nav-link:hover {
+  border-bottom: 2px solid var(--nav-text);
+}
+
+/* Гамбургер */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+body.dark .hamburger span {
+  background: var(--text);
+}
+
+/* Мобильное меню (скрыто по умолчанию) */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    width: 200px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  }
+  .nav-menu.active {
+    max-height: 300px;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Основной контент */
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .welcome-section {
@@ -68,6 +145,7 @@ body {
   justify-content: center;
   position: relative;
   text-align: center;
+  padding: 0 20px;
 }
 
 .centered-text {
