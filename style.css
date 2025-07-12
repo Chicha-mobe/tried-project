@@ -85,7 +85,7 @@ body {
 
 /* Гамбургер */
 .hamburger {
-  display: none;
+  display: none; /* отображается только на мобилках */
   flex-direction: column;
   justify-content: space-between;
   width: 24px;
@@ -103,6 +103,14 @@ body {
   border-radius: 2px;
   transition: background 0.3s;
 }
+
+/* Включаем гамбургер на мобильных */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
 
 body.dark .hamburger span {
   background: var(--text);
