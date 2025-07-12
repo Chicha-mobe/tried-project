@@ -1,1 +1,121 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #F2DDC6;
+  color: #333;
+}
 
+.container {
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+}
+
+.logo {
+  max-width: 120px;
+  display: block;
+  margin: 0 auto;
+}
+
+.project-name {
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.code-block {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.code-header {
+  background: #2d2d2d;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red {
+  background: #ff5f56;
+}
+.yellow {
+  background: #ffbd2e;
+}
+.green {
+  background: #27c93f;
+}
+
+.filename {
+  margin-left: auto;
+  color: #ccc;
+  font-size: 14px;
+}
+
+pre {
+  margin: 0;
+  padding: 20px;
+  white-space: pre-wrap;
+  user-select: none;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.example {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 100px;
+  word-break: break-word;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-button {
+  display: inline-block;
+  margin: 10px;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #444;
+}
